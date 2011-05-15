@@ -1,0 +1,16 @@
+.bundle
+db/*.sqlite3*
+log/*.log
+*.log
+tmp/**/*
+tmp/*
+doc/api
+doc/app
+*.swp
+*~
+.DS_Store
+.project
+.buildpath
+.rvmrc
+database.yml   → Allows for different developers to use differenty type of systems.
+.idea
