@@ -1,0 +1,18 @@
+.label
+  .field1
+    = label_datum.field1
+  .field3
+    = label_datum.field3
+  %br
+  - if label_datum.field5.length < 28 then
+    .field5
+      = label_datum.field5
+  - else
+    .field5.longname
+      = label_datum.field5
+  %br
+  .field9
+    = label_datum.field9
+  %br
+  .field11
+    = label_datum.field11

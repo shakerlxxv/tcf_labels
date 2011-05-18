@@ -1,0 +1,45 @@
+%h1 Listing label_data
+
+%table
+  %tr
+    %th Name
+    %th Field1
+    %th Field2
+    %th Field3
+    %th Field4
+    %th Field5
+    %th Field6
+    %th Field7
+    %th Field8
+    %th Field9
+    %th Field10
+    %th Field11
+    %th Field12
+    %th Label data set
+    %th
+    %th
+    %th
+
+  - @label_data.each do |label_datum|
+    %tr
+      %td= label_datum.name
+      %td= label_datum.field1
+      %td= label_datum.field2
+      %td= label_datum.field3
+      %td= label_datum.field4
+      %td= label_datum.field5
+      %td= label_datum.field6
+      %td= label_datum.field7
+      %td= label_datum.field8
+      %td= label_datum.field9
+      %td= label_datum.field10
+      %td= label_datum.field11
+      %td= label_datum.field12
+      %td= label_datum.label_data_set_id
+      %td= link_to 'Show', label_datum
+      %td= link_to 'Edit', edit_label_datum_path(label_datum)
+      %td= link_to 'Destroy', label_datum, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Label datum', new_label_datum_path

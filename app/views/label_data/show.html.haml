@@ -1,0 +1,48 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @label_datum.name
+%p
+  %b Field1:
+  = @label_datum.field1
+%p
+  %b Field2:
+  = @label_datum.field2
+%p
+  %b Field3:
+  = @label_datum.field3
+%p
+  %b Field4:
+  = @label_datum.field4
+%p
+  %b Field5:
+  = @label_datum.field5
+%p
+  %b Field6:
+  = @label_datum.field6
+%p
+  %b Field7:
+  = @label_datum.field7
+%p
+  %b Field8:
+  = @label_datum.field8
+%p
+  %b Field9:
+  = @label_datum.field9
+%p
+  %b Field10:
+  = @label_datum.field10
+%p
+  %b Field11:
+  = @label_datum.field11
+%p
+  %b Field12:
+  = @label_datum.field12
+%p
+  %b Label data set:
+  = @label_datum.label_data_set_id
+
+= link_to 'Edit', edit_label_datum_path(@label_datum)
+\|
+= link_to 'Back', label_data_path

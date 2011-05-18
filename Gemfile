@@ -9,6 +9,8 @@ gem 'sqlite3'
 gem 'jquery-rails'
 gem 'compass'
 gem 'haml-rails'
+gem 'spreadsheet'
+gem 'carrierwave'
 
 # Use unicorn as the web server
 # gem 'unicorn'

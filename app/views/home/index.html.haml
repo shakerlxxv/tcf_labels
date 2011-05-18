@@ -1,0 +1,6 @@
+%h1 Home#index
+= form_tag '/upload', :multipart => true do
+  = label_tag :file, 'Upload Data File'
+  = file_field_tag :file
+  = submit_tag 
+

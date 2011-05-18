@@ -1,0 +1,19 @@
+%h1 Listing label_data_sets
+
+%table
+  %tr
+    %th Name
+    %th
+    %th
+    %th
+
+  - @label_data_sets.each do |label_data_set|
+    %tr
+      %td= label_data_set.name
+      %td= link_to 'Show', label_data_set
+      %td= link_to 'Edit', edit_label_data_set_path(label_data_set)
+      %td= link_to 'Destroy', label_data_set, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Label data set', new_label_data_set_path

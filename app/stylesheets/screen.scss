@@ -10,4 +10,68 @@
 // Combine the partials into a single screen stylesheet.
 @import "partials/page";
 @import "partials/form";
-@import "partials/two_col";
+//@import "partials/two_col";
+@import "compass";
+
+body {
+  @include showgrid;
+}
+
+.label {
+  @include min-height(150px);
+  @include min-width(250px);
+  max-height: 150px;
+  max-width: 250px;
+  //border: 1px solid black;
+  margin: span(1);
+  padding: 5px;
+}
+
+.label_space {
+  @include column(8);
+}
+
+.label_space.lastcol {
+  @include column(8,true);
+}
+
+.label_space.lastcol.lastrow {
+  page-break-after: always;
+}
+
+.label_data_set {
+  @include column(24, true);
+}
+
+#footer {
+  @include column(24, true);
+}
+
+.field1 { 
+  @include column(5);
+  font-weight: bold;
+}
+
+.field3 {
+  text-align: right;
+}
+
+.field5 {
+  @include nowrap;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.field5.longname {
+  font-size: 17px;
+}
+
+.field9 { 
+  text-align: right;
+}
+
+.field11 {
+  text-align: center;
+}
+

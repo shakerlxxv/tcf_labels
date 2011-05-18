@@ -1,0 +1,52 @@
+= form_for @label_datum do |f|
+  -if @label_datum.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@label_datum.errors.count, "error")} prohibited this label_datum from being saved:"
+      %ul
+        - @label_datum.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :field1
+    = f.text_field :field1
+  .field
+    = f.label :field2
+    = f.text_field :field2
+  .field
+    = f.label :field3
+    = f.text_field :field3
+  .field
+    = f.label :field4
+    = f.text_field :field4
+  .field
+    = f.label :field5
+    = f.text_field :field5
+  .field
+    = f.label :field6
+    = f.text_field :field6
+  .field
+    = f.label :field7
+    = f.text_field :field7
+  .field
+    = f.label :field8
+    = f.text_field :field8
+  .field
+    = f.label :field9
+    = f.text_field :field9
+  .field
+    = f.label :field10
+    = f.text_field :field10
+  .field
+    = f.label :field11
+    = f.text_field :field11
+  .field
+    = f.label :field12
+    = f.text_field :field12
+  .field
+    = f.label :label_data_set_id
+    = f.text_field :label_data_set_id
+  .actions
+    = f.submit 'Save'
