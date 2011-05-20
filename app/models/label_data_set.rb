@@ -31,11 +31,11 @@ class LabelDataSet < ActiveRecord::Base
     # clear existing data parses
     self.label_datum.destroy_all
     book = Spreadsheet.open(self.excel_data.current_path)
-    sheet = book.worksheet 'Wednesday Harvest Sheet'
+    sheet = book.worksheet 'Monday Harvest Sheet'
     sheet.each do |row|
       dtext = row[@@COLMAP[:delivery_text]]
       ntext = row[@@COLMAP[:name]]
-      next unless ntext and dtext and dtext != 'Delivery_Text' and dtext == 'Wed - PU'
+      next unless ntext and dtext and dtext != 'Delivery_Text' and dtext != 'Monday - PU'
       new_label = self.label_datum.build
       new_label.name = row[@@COLMAP[:name]]
       new_label.field1 = dtext
@@ -58,7 +58,7 @@ class LabelDataSet < ActiveRecord::Base
       # compute the desired label
       label = sym.to_s.split('_')[1].upcase
       if label.length > 3 then
-        label = label.downcase
+        label = label.downcase[0..2] # trim honey, and syrup
       end
       if ctext > 1 then
         # BLS this is a hack for decimal trunc display
