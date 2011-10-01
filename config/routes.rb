@@ -55,7 +55,7 @@ TcfLabels::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "label_data_set#index"
+  root :to => "label_data_sets#index"
 
   # See how all your routes lay out with "rake routes"
 

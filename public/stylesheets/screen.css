@@ -503,11 +503,16 @@ form.bp textarea {
 }
 
 /* line 30, ../../app/stylesheets/screen.scss */
+.field10 {
+  font-size: 22px;
+}
+
+/* line 34, ../../app/stylesheets/screen.scss */
 .field11 {
   font-size: 19px;
 }
 
-/* line 35, ../../app/stylesheets/screen.scss */
+/* line 39, ../../app/stylesheets/screen.scss */
 .label {
   min-height: 160px;
   height: auto !important;
@@ -520,12 +525,12 @@ form.bp textarea {
   margin: 4px;
   overflow: clip;
 }
-/* line 44, ../../app/stylesheets/screen.scss */
+/* line 48, ../../app/stylesheets/screen.scss */
 .label br {
   line-height: 5px;
 }
 
-/* line 49, ../../app/stylesheets/screen.scss */
+/* line 53, ../../app/stylesheets/screen.scss */
 .label_space {
   display: inline;
   float: left;
@@ -538,7 +543,7 @@ form.bp textarea {
   overflow-x: hidden;
 }
 
-/* line 54, ../../app/stylesheets/screen.scss */
+/* line 58, ../../app/stylesheets/screen.scss */
 .label_space.lastcol {
   display: inline;
   float: left;
@@ -550,12 +555,12 @@ form.bp textarea {
   overflow-x: hidden;
 }
 
-/* line 58, ../../app/stylesheets/screen.scss */
+/* line 62, ../../app/stylesheets/screen.scss */
 .label_space.lastcol.lastrow {
   page-break-after: always;
 }
 
-/* line 62, ../../app/stylesheets/screen.scss */
+/* line 66, ../../app/stylesheets/screen.scss */
 .label_data_set {
   display: inline;
   float: left;
@@ -567,7 +572,7 @@ form.bp textarea {
   overflow-x: hidden;
 }
 
-/* line 66, ../../app/stylesheets/screen.scss */
+/* line 70, ../../app/stylesheets/screen.scss */
 #footer {
   display: inline;
   float: left;
@@ -579,7 +584,7 @@ form.bp textarea {
   overflow-x: hidden;
 }
 
-/* line 70, ../../app/stylesheets/screen.scss */
+/* line 74, ../../app/stylesheets/screen.scss */
 .field1 {
   display: inline;
   float: left;
@@ -592,34 +597,34 @@ form.bp textarea {
   overflow-x: hidden;
 }
 
-/* line 75, ../../app/stylesheets/screen.scss */
+/* line 79, ../../app/stylesheets/screen.scss */
 .field3 {
   text-align: right;
 }
 
-/* line 79, ../../app/stylesheets/screen.scss */
+/* line 83, ../../app/stylesheets/screen.scss */
 .field5 {
   text-align: center;
   font-size: 26px;
   font-weight: bolder;
 }
 
-/* line 86, ../../app/stylesheets/screen.scss */
+/* line 90, ../../app/stylesheets/screen.scss */
 .field5.longname {
   font-size: 24px;
 }
 
-/* line 90, ../../app/stylesheets/screen.scss */
+/* line 94, ../../app/stylesheets/screen.scss */
 .field5.shortname {
   font-size: 28px;
 }
 
-/* line 94, ../../app/stylesheets/screen.scss */
+/* line 98, ../../app/stylesheets/screen.scss */
 .field9 {
   text-align: right;
 }
 
-/* line 98, ../../app/stylesheets/screen.scss */
+/* line 102, ../../app/stylesheets/screen.scss */
 .field11 {
   text-align: center;
 }
