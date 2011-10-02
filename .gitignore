@@ -14,3 +14,5 @@ doc/app
 .rvmrc
 database.yml   → Allows for different developers to use differenty type of systems.
 .idea
+public/uploads/**/*
+public/uploads/*
