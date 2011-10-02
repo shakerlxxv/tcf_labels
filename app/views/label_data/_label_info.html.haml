@@ -2,14 +2,14 @@
   .field1
     =  empty_ness label_datum.field1
   .field2
-    = label_datum.field2
+    = empty_ness label_datum.field2
   .field3
     =  empty_ness label_datum.field3
   %br
-  - if label_datum.field5.length < 20 then
+  - if label_datum.field5.length < 28 then
     .field5.shortname
       = label_datum.field5
-  - elsif label_datum.field5.length < 28 then
+  - elsif label_datum.field5.length < 36 then
     .field5
       = label_datum.field5
   - else

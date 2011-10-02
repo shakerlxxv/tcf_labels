@@ -88,7 +88,7 @@ class LabelDataSet < ActiveRecord::Base
       new_label = self.label_datum.build
       new_label.name = row[@@COLMAP[:name]]
       new_label.field1 = dtext
-      new_label.field2 = row[@@COLMAP[:newsletter]] ? 'N' : ' '
+      new_label.field2 = row[@@COLMAP[:newsletter]] ? 'N' : ''
       new_label.field3 = check_fields( row, :size_f, :size_s )
       new_label.field5 = row[@@COLMAP[:name]]
       new_label.field9 = check_fields( row, :option_b,:option_e,:option_e5,:option_honey,:option_syrup,:option_cookbook)

@@ -24,11 +24,12 @@ body {
 }
 
 .field9 {
+  float: right;
   font-size: 22px;
 }
 
 .field10 {
-  font-size: 22px;
+  font-size: 36px;
 }
 
 .field11 {
@@ -37,7 +38,7 @@ body {
 
 
 .label {
-  @include min-height(160px);
+  @include min-height(190px);
   @include min-width(255px);
   max-height: 190px;
   max-width: 255px;
@@ -46,7 +47,7 @@ body {
   //padding: 5px;
   overflow: clip;
   br {
-    line-height: 5px;
+    line-height: 1px;
   }
 }
 
@@ -72,15 +73,23 @@ body {
 }
 
 .field1 { 
-  @include column(5);
+  @include column(2);
   font-weight: bold;
 }
 
+.field2 { 
+  @include column(2);
+  text-align: right;
+}
+
 .field3 {
+  @include column(2);
   text-align: right;
 }
 
 .field5 {
+  @include column(6);
+  height: 110px;
   //@include nowrap;
   text-align: center;
   font-size: 26px;
