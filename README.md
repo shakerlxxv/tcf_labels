@@ -1,4 +1,4 @@
-== TCF Labels
+## TCF Labels
 
 Sponsored by [Tracie's Community Farm][tracies_farm].
 
