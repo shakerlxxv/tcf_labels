@@ -30,6 +30,7 @@ class LabelDataSet < ActiveRecord::Base
     :delivery_text => 28}
   """
   # 2011 Fall COLMAP
+  """
   @@COLMAP = {
     :basket_number => 0,
     :name => 1,
@@ -46,6 +47,12 @@ class LabelDataSet < ActiveRecord::Base
     :option_syrup => 12,
     :option_cookbook => 13,
     :pickup_code => 14
+  }
+  """
+  # 2012 Spring COLMAP
+  @@COLMAP = {
+    :basket_number => 0,
+    :name => 1
   }
 
   #-----------------------------------------------------------------------------
@@ -76,7 +83,8 @@ class LabelDataSet < ActiveRecord::Base
       new_label.save
     end
   """
-  def parse_data
+  # 2011 Fall Share Parse Logic
+  """
     # clear existing data parses
     self.label_datum.destroy_all
     book = Spreadsheet.open(self.excel_data.current_path)
@@ -95,11 +103,26 @@ class LabelDataSet < ActiveRecord::Base
       new_label.field10 =  value(row[@@COLMAP[:basket_number]])
       new_label.save
     end
+  """
+  # 2012 Spring Share Logic
+  def parse_data
+    self.label_datum.destroy_all
+    book = Spreadsheet.open(self.excel_data.current_path)
+    sheet = book.worksheet 'Sheet1'
+    sheet.each do |row|
+      ntext = row[@@COLMAP[:name]]
+      next unless ntext
+      new_label = self.label_datum.build
+      new_label.name = row[@@COLMAP[:name]]
+      new_label.field5 = row[@@COLMAP[:name]]
+      new_label.field10 =  value(row[@@COLMAP[:basket_number]])
+      new_label.save
+    end
   end
 
   # added to handle formuals and links and stuff
   def value(cell)
-    if cell.kind_of?(Fixnum)
+    if cell.kind_of?(Fixnum) or cell.kind_of?(Float) or cell.kind_of?(String)
       cell
     else
       Integer(cell.value)

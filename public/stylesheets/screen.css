@@ -632,7 +632,7 @@ form.bp textarea {
   width: 242.5px;
   height: 110px;
   text-align: center;
-  font-size: 26px;
+  font-size: 32px;
   font-weight: bolder;
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.11.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
@@ -642,12 +642,12 @@ form.bp textarea {
 
 /* line 99, ../../app/stylesheets/screen.scss */
 .field5.longname {
-  font-size: 24px;
+  font-size: 30px;
 }
 
 /* line 103, ../../app/stylesheets/screen.scss */
 .field5.shortname {
-  font-size: 28px;
+  font-size: 35px;
 }
 
 /* line 107, ../../app/stylesheets/screen.scss */
