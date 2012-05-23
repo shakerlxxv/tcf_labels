@@ -50,10 +50,37 @@ class LabelDataSet < ActiveRecord::Base
   }
   """
   # 2012 Spring COLMAP
+  """
   @@COLMAP = {
     :basket_number => 0,
     :name => 1
   }
+  """
+  # 2012 Summer COLMAP
+  @@COLMAP = {
+    :name => 0,
+    :newsletter => 3,
+    :excludes => 4,
+    :size_lgf => 5,
+    :size_f => 6,
+    :size_s => 7,
+    :option_m => 8,
+    :option_k => 9,
+    :option_k8 => 10,
+    :option_c => 11,
+    :option_c9 => 12,
+    :option_h => 13,
+    :option_l => 14,
+    :option_m9 => 15,
+    :option_b => 16,
+    :option_e => 17,
+    :option_e9 => 18,
+    :option_r => 19,
+    :option_fl => 20,
+    :option_bl => 21,
+    :option_honey => 22,
+    :option_syrup => 23,
+    :delivery_text => 26}
 
   #-----------------------------------------------------------------------------
   # parse the data from the spreadsheet COLMAP hash into 12 fields which 
@@ -105,6 +132,7 @@ class LabelDataSet < ActiveRecord::Base
     end
   """
   # 2012 Spring Share Logic
+  """
   def parse_data
     self.label_datum.destroy_all
     book = Spreadsheet.open(self.excel_data.current_path)
@@ -116,6 +144,30 @@ class LabelDataSet < ActiveRecord::Base
       new_label.name = row[@@COLMAP[:name]]
       new_label.field5 = row[@@COLMAP[:name]]
       new_label.field10 =  value(row[@@COLMAP[:basket_number]])
+      new_label.save
+    end
+  end
+  """
+
+  # 2012 Summer Share Logic
+  def parse_data
+    puts "going to read some data now"
+    # clear existing data parses
+    self.label_datum.destroy_all
+    book = Spreadsheet.open(self.excel_data.current_path)
+    sheet = book.worksheet 'Friday Harvest Sheet'
+    sheet.each do |row|
+      dtext = row[@@COLMAP[:delivery_text]]
+      ntext = row[@@COLMAP[:name]]
+      puts " reading row #{ntext} for #{dtext}"
+      next unless ntext and dtext
+      new_label = self.label_datum.build
+      new_label.name = row[@@COLMAP[:name]]
+      new_label.field1 = dtext
+      new_label.field3 = check_fields( row, :size_lgf, :size_f, :size_s, :newsletter )
+      new_label.field5 = row[@@COLMAP[:name]]
+      new_label.field9 = check_fields( row, :option_m,:option_k,:option_k8,:option_c,:option_c9,:option_h,:option_l,:option_m9,:option_b,:option_e,:option_e9,:option_r, :option_fl,:option_bl)
+      new_label.field11 =  row[@@COLMAP[:excludes]]
       new_label.save
     end
   end
