@@ -28,8 +28,7 @@ body {
   font-size: 19px;
 }
 
-.field12 {
-  float: right;
+.field10,.field12 {
   font-size: 36px;
 }
 
@@ -88,6 +87,7 @@ body {
   font-size: 32px;
   font-weight: bolder;
   line-height: 0.9;
+  margin-bottom: 5px;
 }
 
 .field5.longname {
@@ -103,8 +103,15 @@ body {
   text-align: center;
 }
 
+.field10 {
+  @include column(1);
+  text-align: left;
+}
+
 .field12 {
-  @include column(6);
+  @include column(5);
   text-align: right;
+  line-height: 0.9;
+  padding-left: 5px;
 }
 

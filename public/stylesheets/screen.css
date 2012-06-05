@@ -266,12 +266,11 @@ body .loud {
 }
 
 /* line 31, ../../app/assets/stylesheets/screen.scss */
-.field12 {
-  float: right;
+.field10, .field12 {
   font-size: 36px;
 }
 
-/* line 37, ../../app/assets/stylesheets/screen.scss */
+/* line 36, ../../app/assets/stylesheets/screen.scss */
 .label {
   min-height: 190px;
   height: auto !important;
@@ -284,12 +283,12 @@ body .loud {
   margin: 4px;
   overflow: clip;
 }
-/* line 46, ../../app/assets/stylesheets/screen.scss */
+/* line 45, ../../app/assets/stylesheets/screen.scss */
 .label br {
   line-height: 1px;
 }
 
-/* line 51, ../../app/assets/stylesheets/screen.scss */
+/* line 50, ../../app/assets/stylesheets/screen.scss */
 .label_space {
   display: inline;
   float: left;
@@ -302,7 +301,7 @@ body .loud {
   overflow-x: hidden;
 }
 
-/* line 56, ../../app/assets/stylesheets/screen.scss */
+/* line 55, ../../app/assets/stylesheets/screen.scss */
 .label_space.lastcol {
   display: inline;
   float: left;
@@ -314,12 +313,12 @@ body .loud {
   overflow-x: hidden;
 }
 
-/* line 60, ../../app/assets/stylesheets/screen.scss */
+/* line 59, ../../app/assets/stylesheets/screen.scss */
 .label_space.lastcol.lastrow {
   page-break-after: always;
 }
 
-/* line 64, ../../app/assets/stylesheets/screen.scss */
+/* line 63, ../../app/assets/stylesheets/screen.scss */
 .label_data_set {
   display: inline;
   float: left;
@@ -331,7 +330,7 @@ body .loud {
   overflow-x: hidden;
 }
 
-/* line 68, ../../app/assets/stylesheets/screen.scss */
+/* line 67, ../../app/assets/stylesheets/screen.scss */
 #footer {
   display: inline;
   float: left;
@@ -343,7 +342,7 @@ body .loud {
   overflow-x: hidden;
 }
 
-/* line 72, ../../app/assets/stylesheets/screen.scss */
+/* line 71, ../../app/assets/stylesheets/screen.scss */
 .field1 {
   display: inline;
   float: left;
@@ -356,7 +355,7 @@ body .loud {
   overflow-x: hidden;
 }
 
-/* line 78, ../../app/assets/stylesheets/screen.scss */
+/* line 77, ../../app/assets/stylesheets/screen.scss */
 .field3 {
   display: inline;
   float: left;
@@ -369,7 +368,7 @@ body .loud {
   overflow-x: hidden;
 }
 
-/* line 83, ../../app/assets/stylesheets/screen.scss */
+/* line 82, ../../app/assets/stylesheets/screen.scss */
 .field5 {
   display: inline;
   float: left;
@@ -380,6 +379,7 @@ body .loud {
   font-size: 32px;
   font-weight: bolder;
   line-height: 0.9;
+  margin-bottom: 5px;
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.12.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html .field5 {
@@ -410,12 +410,27 @@ body .loud {
 }
 
 /* line 106, ../../app/assets/stylesheets/screen.scss */
+.field10 {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  width: 30px;
+  text-align: left;
+}
+/* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.12.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html .field10 {
+  overflow-x: hidden;
+}
+
+/* line 111, ../../app/assets/stylesheets/screen.scss */
 .field12 {
   display: inline;
   float: left;
   margin-right: 10px;
-  width: 230px;
+  width: 190px;
   text-align: right;
+  line-height: 0.9;
+  padding-left: 5px;
 }
 /* line 147, ../../../../../../.rvm/gems/ruby-1.9.2-p180/gems/compass-0.12.1/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
 * html .field12 {

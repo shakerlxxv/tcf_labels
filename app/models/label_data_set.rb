@@ -57,37 +57,36 @@ class LabelDataSet < ActiveRecord::Base
   }
 
   """
-  @i = 0
-
   # 2012 Summer COLMAP
   @@COLMAP = {
-    :name => 0, 
-    :email => 1,
-    :phone => 2,
-    :newsletter_n => 3,
-    :excludes => 4,
-    :dummy0 => 5,
-    :size_lgf => 6,
-    :size_f => 7,
-    :size_s => 8,
-    :option_m => 9,
-    :option_k => 10,
-    :option_k8 => 11,
-    :option_c => 12,
-    :option_c9 => 13,
-    :option_h => 14,
-    :option_l => 15,
-    :option_m9 => 16,
-    :option_b => 17,
-    :option_e => 18,
-    :option_e9 => 19,
-    :option_r => 20,
-    :option_fl => 21,
-    :option_bl => 22,
-    :option_honey => 23,
-    :option_syrup => 24,
-    :dummy1 => 25,
-    :delivery_text => 26}
+    :basket_number => 0,
+    :name => 1, 
+    :email => 2,
+    :phone => 3,
+    :newsletter_news => 4,
+    :excludes => 5,
+    :dummy0 => 6,
+    :size_lgf => 7,
+    :size_f => 8,
+    :size_s => 9,
+    :option_m => 10,
+    :option_k => 11,
+    :option_k8 => 12,
+    :option_c => 13,
+    :option_c9 => 14,
+    :option_h => 15,
+    :option_l => 16,
+    :option_m9 => 17,
+    :option_b => 18,
+    :option_e => 19,
+    :option_e9 => 20,
+    :option_r => 21,
+    :option_fl => 22,
+    :option_bl => 23,
+    :option_honey => 24,
+    :option_syrup => 25,
+    :dummy1 => 26,
+    :delivery_text => 27}
 
   #-----------------------------------------------------------------------------
   # parse the data from the spreadsheet COLMAP hash into 12 fields which 
@@ -162,21 +161,22 @@ class LabelDataSet < ActiveRecord::Base
     # clear existing data parses
     self.label_datum.destroy_all
     book = Spreadsheet.open(self.excel_data.current_path)
-    sheet = book.worksheet 'Monday Harvest Sheet'
+    sheet = book.worksheet 'junk'
     sheet.each do |row|
       dtext = row[@@COLMAP[:delivery_text]]
       ntext = row[@@COLMAP[:name]]
       puts " reading row #{ntext} for #{dtext}"
       #next unless ntext and dtext
       # use this line to split delivery and pickup output
-      next unless ntext and dtext and dtext == 'PU Mon'
+      next unless ntext and dtext and dtext != 'junk'
       new_label = self.label_datum.build
       new_label.name = row[@@COLMAP[:name]]
       new_label.field1 = dtext
-      new_label.field3 = check_fields( row, :size_lgf, :size_f, :size_s, :newsletter_n )
+      new_label.field3 = check_fields( row, :size_lgf, :size_f, :size_s, :newsletter_news )
       new_label.field5 = row[@@COLMAP[:name]]
       new_label.field5.strip!
       new_label.field9 = row[@@COLMAP[:excludes]]
+      new_label.field10 = value(row[@@COLMAP[:basket_number]])
       new_label.field12 = check_fields( row, :option_m,:option_k,:option_k8,:option_c,:option_c9,:option_h,:option_l,:option_m9,:option_b,:option_e,:option_e9,:option_r, :option_fl,:option_bl)
       new_label.save
     end
@@ -184,8 +184,12 @@ class LabelDataSet < ActiveRecord::Base
 
   # added to handle formuals and links and stuff
   def value(cell)
-    if cell.kind_of?(Fixnum) or cell.kind_of?(Float) or cell.kind_of?(String)
+    if cell.nil? or cell.kind_of?(String)
       cell
+    elsif cell.kind_of?(Fixnum) or cell.kind_of?(Float)
+      Integer(cell)
+    elsif cell.value.nil? or cell.value == " "  # BLS : this is an ugly hack
+      nil
     else
       Integer(cell.value)
     end
@@ -196,13 +200,13 @@ class LabelDataSet < ActiveRecord::Base
     symbols.each do |sym|
       # first check column data
       #puts ctext = row[@@COLMAP[sym]]
-      ctext = row[@@COLMAP[sym]]
+      ctext = value(row[@@COLMAP[sym]])
       next unless  ctext.to_i > 0
       # compute the desired label
       label = sym.to_s.split('_')[1].upcase
-      if label.length > 3 then
-        label = label.downcase[0..2] # trim honey, and syrup
-      end
+      #if label.length > 3 then
+      #  label = label.downcase[0..2] # trim honey, and syrup
+      #end
       if ctext > 1 then
         # BLS this is a hack for decimal trunc display
         rvalue += ctext.to_s.split('.')[0] + "x" + label + " "
