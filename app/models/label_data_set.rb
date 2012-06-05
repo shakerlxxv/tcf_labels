@@ -55,31 +55,38 @@ class LabelDataSet < ActiveRecord::Base
     :basket_number => 0,
     :name => 1
   }
+
   """
+  @i = 0
+
   # 2012 Summer COLMAP
   @@COLMAP = {
-    :name => 0,
-    :newsletter => 3,
+    :name => 0, 
+    :email => 1,
+    :phone => 2,
+    :newsletter_n => 3,
     :excludes => 4,
-    :size_lgf => 5,
-    :size_f => 6,
-    :size_s => 7,
-    :option_m => 8,
-    :option_k => 9,
-    :option_k8 => 10,
-    :option_c => 11,
-    :option_c9 => 12,
-    :option_h => 13,
-    :option_l => 14,
-    :option_m9 => 15,
-    :option_b => 16,
-    :option_e => 17,
-    :option_e9 => 18,
-    :option_r => 19,
-    :option_fl => 20,
-    :option_bl => 21,
-    :option_honey => 22,
-    :option_syrup => 23,
+    :dummy0 => 5,
+    :size_lgf => 6,
+    :size_f => 7,
+    :size_s => 8,
+    :option_m => 9,
+    :option_k => 10,
+    :option_k8 => 11,
+    :option_c => 12,
+    :option_c9 => 13,
+    :option_h => 14,
+    :option_l => 15,
+    :option_m9 => 16,
+    :option_b => 17,
+    :option_e => 18,
+    :option_e9 => 19,
+    :option_r => 20,
+    :option_fl => 21,
+    :option_bl => 22,
+    :option_honey => 23,
+    :option_syrup => 24,
+    :dummy1 => 25,
     :delivery_text => 26}
 
   #-----------------------------------------------------------------------------
@@ -155,19 +162,22 @@ class LabelDataSet < ActiveRecord::Base
     # clear existing data parses
     self.label_datum.destroy_all
     book = Spreadsheet.open(self.excel_data.current_path)
-    sheet = book.worksheet 'Friday Harvest Sheet'
+    sheet = book.worksheet 'Monday Harvest Sheet'
     sheet.each do |row|
       dtext = row[@@COLMAP[:delivery_text]]
       ntext = row[@@COLMAP[:name]]
       puts " reading row #{ntext} for #{dtext}"
-      next unless ntext and dtext
+      #next unless ntext and dtext
+      # use this line to split delivery and pickup output
+      next unless ntext and dtext and dtext == 'PU Mon'
       new_label = self.label_datum.build
       new_label.name = row[@@COLMAP[:name]]
       new_label.field1 = dtext
-      new_label.field3 = check_fields( row, :size_lgf, :size_f, :size_s, :newsletter )
+      new_label.field3 = check_fields( row, :size_lgf, :size_f, :size_s, :newsletter_n )
       new_label.field5 = row[@@COLMAP[:name]]
-      new_label.field9 = check_fields( row, :option_m,:option_k,:option_k8,:option_c,:option_c9,:option_h,:option_l,:option_m9,:option_b,:option_e,:option_e9,:option_r, :option_fl,:option_bl)
-      new_label.field11 =  row[@@COLMAP[:excludes]]
+      new_label.field5.strip!
+      new_label.field9 = row[@@COLMAP[:excludes]]
+      new_label.field12 = check_fields( row, :option_m,:option_k,:option_k8,:option_c,:option_c9,:option_h,:option_l,:option_m9,:option_b,:option_e,:option_e9,:option_r, :option_fl,:option_bl)
       new_label.save
     end
   end

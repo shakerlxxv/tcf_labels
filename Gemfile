@@ -7,10 +7,13 @@ gem 'rails', '3.0.7'
 
 gem 'sqlite3'
 gem 'jquery-rails'
-gem 'compass'
 gem 'haml-rails'
 gem 'spreadsheet'
 gem 'carrierwave'
+
+group :assets do
+  gem 'compass-rails'
+end
 
 # Use unicorn as the web server
 # gem 'unicorn'

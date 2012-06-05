@@ -8,13 +8,14 @@
 @import "blueprint";
 
 // Combine the partials into a single screen stylesheet.
-@import "partials/page";
-@import "partials/form";
+//@import "partials/page";
+//@import "partials/form";
 //@import "partials/two_col";
 @import "compass";
 
 body {
-  @include showgrid;
+  @include blueprint-typography(true);
+  //@include showgrid;
 }
 
 // set default font size for all fields to big.
@@ -24,16 +25,12 @@ body {
 }
 
 .field9 {
+  font-size: 19px;
+}
+
+.field12 {
   float: right;
   font-size: 36px;
-}
-
-.field10 {
-  font-size: 36px;
-}
-
-.field11 {
-  font-size: 19px;
 }
 
 
@@ -73,14 +70,10 @@ body {
 }
 
 .field1 { 
-  @include column(4);
+  @include column(5);
   font-weight: bold;
 }
 
-.field2 { 
-  @include column(1);
-  text-align: right;
-}
 
 .field3 {
   @include column(1);
@@ -89,11 +82,12 @@ body {
 
 .field5 {
   @include column(6);
-  height: 110px;
+  min-height: 90px;
   //@include nowrap;
   text-align: center;
   font-size: 32px;
   font-weight: bolder;
+  line-height: 0.9;
 }
 
 .field5.longname {
@@ -105,10 +99,12 @@ body {
 }
 
 .field9 { 
-  text-align: right;
+  @include column(6);
+  text-align: center;
 }
 
-.field11 {
-  text-align: center;
+.field12 {
+  @include column(6);
+  text-align: right;
 }
 
